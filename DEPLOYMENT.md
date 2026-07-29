@@ -2,13 +2,21 @@
 
 Covers both repositories that make up this app:
 
-- **Backend** (`evcharging/`, Spring Boot) → [Railway](https://railway.app)
-- **Frontend** (`evcharge-ui/`, Vite/React) → [Vercel](https://vercel.com)
+- **Backend** (`evcharging/`, Spring Boot) → GitHub:
+  [`vedantkakde410/evcharging-backend`](https://github.com/vedantkakde410/evcharging-backend)
+  → [Railway](https://railway.app)
+- **Frontend** (`evcharge-ui/`, Vite/React) → GitHub:
+  [`vedantkakde410/evcharging-frontend`](https://github.com/vedantkakde410/evcharging-frontend)
+  → [Vercel](https://vercel.com)
 
-They are two separate git repositories today (confirmed via `git remote -v`
-in each) and deploy independently. Nothing in this module changed any
-application behavior — see `CHANGELOG.md` Module P0 for exactly what moved
-from hardcoded to environment-variable-driven, and why.
+They are two separate git repositories and deploy independently. The
+backend repo's history is a single fresh commit (Module P1) — an earlier
+local-only commit had a real database password hardcoded and was never
+pushed anywhere; a clean commit replaced it before this repo's first push
+rather than carrying that secret into a public remote's history. Nothing
+in this module changed any application behavior — see `CHANGELOG.md`
+Module P0 for exactly what moved from hardcoded to
+environment-variable-driven, and why.
 
 ---
 
@@ -62,9 +70,9 @@ anything; the dump already reflects the current schema.
 
 ## 2. Backend → Railway
 
-1. Push the `evcharging/` repository to GitHub if it isn't already (its
-   `origin` remote is currently a placeholder —
-   `git remote set-url origin <your-real-repo-url>` and push).
+1. `evcharging/` is already pushed to
+   [`vedantkakde410/evcharging-backend`](https://github.com/vedantkakde410/evcharging-backend)
+   (Module P1).
 2. In Railway: **New Project → Deploy from GitHub repo**, select the
    `evcharging` repo.
 3. Railway auto-detects the Maven project (via `pom.xml`) and builds it
@@ -109,8 +117,9 @@ anything; the dump already reflects the current schema.
 
 ## 3. Frontend → Vercel
 
-1. Push `evcharge-ui/` to its GitHub repo (already configured —
-   `ev-charging-frontend`).
+1. `evcharge-ui/` is already pushed to
+   [`vedantkakde410/evcharging-frontend`](https://github.com/vedantkakde410/evcharging-frontend)
+   (Module P1).
 2. In Vercel: **Add New → Project**, import that repo.
 3. Framework preset: **Vite** (auto-detected). Defaults are already
    correct for this repo:
